@@ -121,18 +121,18 @@
                   <td>{{ v.estimate.estimate_date }}</td>
                   <td>{{ v.quantity }}</td>
                   <td>{{ v.rate }}</td>
-                  <td>{{ v.estimate.status}}</td>
+                  <td></td>
                 {% endfor %}
                 </tr>
 
                 {% for s in sales_order %}
                 <tr>
                   <td>Sales Order</td>
-                  <td>{{ s.sale.s_person }}</td>
+                  <td>{{ s.sale.customer.customerName }}</td>
                   <td>{{ s.sale.sales_date }}</td>
                   <td>{{ s.quantity }}</td>
                   <td>{{ s.rate }}</td>
-                  <td>{{ s.sale.status}}</td>
+                  <td></td>
                 {% endfor %}
                 </tr>
                 
@@ -154,7 +154,7 @@
                   <td>{{ p.PO.Ord_date }}</td>
                   <td>{{ p.quantity }}</td>
                   <td>{{ p.rate }}</td>
-                  <td>{{ p.PO.status }}</td>
+                  <td></td>
                 {% endfor %}
                 </tr>
 
@@ -176,7 +176,7 @@
                   <td>{{ i.inv.inv_date }}</td>
                   <td>{{ i.quantity }}</td>
                   <td>{{ i.rate }}</td>
-                  <td>{{ i.inv.status }}</td>
+                  <td></td>
                 {% endfor %}
                 </tr>
 
@@ -187,9 +187,32 @@
                   <td>{{ d.chellan.chellan_date }}</td>
                   <td>{{ d.quantity }}</td>
                   <td>{{ d.rate }}</td>
-                  <td>{{ d.chellan.status }}</td>
+                  <td></td>
                 {% endfor %}
                 </tr>
+
+                {% for b in bills %}
+                <tr>
+                  <td>Bills</td>
+                  <td>{{ b.purchase_bill.customer_name }}</td>
+                  <td>{{ b.purchase_bill.bill_date }}</td>
+                  <td>{{ b.quantity }}</td>
+                  <td>{{ b.rate }}</td>
+                  <td></td>
+                {% endfor %}
+                </tr>
+
+                {% for e in expense %}
+                <tr>
+                  <td>Expense</td>
+                  <td>{{ e.customername }}</td>
+                  <td>{{ e.start_date }}</td>
+                  <td>{{ e.quantity }}</td>
+                  <td>{{ e.amount }}</td>
+                  <td></td>
+                {% endfor %}
+                </tr>
+
               </tbody>
             </table>
           </div>           

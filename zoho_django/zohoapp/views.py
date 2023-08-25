@@ -9680,6 +9680,9 @@ def transaction(request, pk):
     recurring_bills = recurring_bills_items.objects.filter(item = product.Name)
     invoice = invoice_item.objects.filter(product = product.Name)
     deliveryChellan = ChallanItems.objects.filter(item_name = product.Name)
+    bills = PurchaseBillItems.objects.filter(item_name = product.Name)
+    expense = Expense.objects.filter(goods_label = product.Name)
+    
     
     
     context = {
@@ -9693,6 +9696,8 @@ def transaction(request, pk):
         'recurring_bills': recurring_bills,
         'invoice': invoice,
         'deliveryChellan': deliveryChellan,
+        'bills': bills,
+        'expense': expense,
     }
     
     return render(request, 'transactions.html', context)
