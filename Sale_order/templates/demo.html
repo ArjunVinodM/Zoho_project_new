@@ -41,10 +41,6 @@
     size:20px;
   }
 
-  .dropdown-item:hover{
-    color: white;
-  }
-
 </style>
 
 <section class="item" id="navbar-example2" >
@@ -116,23 +112,7 @@
                 <a href="{% url 'transaction' product.id %}" style= "font-size: 18px;margin-left: -0.1rem; width: 8.5rem; height: 2rem; background: #FFCFB0;"  class="btn btn-secondary  text-dark " >
                   Transactions
                 </a>
-
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary  text-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style= "font-size: 18px;margin-left: 0.3rem; width: 6.5rem; height: 2rem; background: #FFCFB0;">
-                  Filter
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="#" id="filterAllButton">All</a>
-                  <a class="dropdown-item" href="#" id="filterActiveButton">Active</a>
-                  <a class="dropdown-item" href="#" id="filterInactiveButton">Inactive</a>
-                  <a class="dropdown-item" href="#" id="filterActiveButton">Active</a>
-                  <a class="dropdown-item" href="#" id="filterInactiveButton">Inactive</a>
-                  <a class="dropdown-item" href="#" id="filterActiveButton">Active</a>
-                  <a class="dropdown-item" href="#" id="filterInactiveButton">Inactive</a>
-                  <a class="dropdown-item" href="#" id="filterActiveButton">Active</a>
-                  <a class="dropdown-item" href="#" id="filterInactiveButton">Inactive</a>
-                </div>
               </div>
-
                 <div class="container">
                   <div class="row">
               
@@ -215,7 +195,7 @@
                   <div class="col-sm-8"> 
                     <div class="card text-black" style="margin-top:30px; margin-right:5px; background: #FFE7C7;">
                       <div class="card-body">
-                        <h2 class="text-center" style="margin-top: 5rem;" >{{product.Name}}</h2> <hr>
+                        <h2 class="text-center" style="margin-top: 5rem;" >{{product.Name}}&nbsp;DETAILS</h2> <hr>
 
                         <h6 style="margin-top: -7.9rem;margin-left: 35rem;">HSN Code :</h6>
                         <h6 style="margin-top: -1.6rem; margin-left: 45rem; margin-bottom: 2rem;"  >{{product.hsn}}</h6> 

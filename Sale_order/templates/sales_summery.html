@@ -25,7 +25,7 @@
   .customize {
     float: left;
     text-align: center;
-    padding: 20px 230px;
+    padding: 20px 130px;
     text-decoration: none;
     font-size: 14px;
   }
@@ -91,24 +91,17 @@
 
 
 <ul class="nav nav-pills">
-  <li class="nav-item">
-    <a href="#home" class="a">
-      <i class="fa fa-bars" style="font-size:25px;"></i>
-    </a>
-  </li>
 
   <li>
     <div class="b text-black">
-      <div id="reportrange" style="background: white; color: black; cursor: pointer; padding: 5px 10px; border: 1px solid black; height: 4vh; width: 12vw;">
+      <div id="reportrange" style="background: white; color: black; cursor: pointer; padding: 5px 10px; border: 1px solid black; height: 5vh; width: 20vw;">
         <i class="fa fa-calendar"></i>&nbsp;
         <span></span> <i class="fa fa-caret-down"></i>
       </div>
     </div>
   </li>
 
-  <a href="{% url 'customize_fifo' %}"  class="customize me-auto">
-    <i class="fa fa-gear" style="font-size:18px;"></i>&nbsp;&nbsp;
-    Customize report
+  <a href="#"  class="customize me-auto">
   </a>
 
   <li class="nav-item dropdown">
@@ -119,7 +112,9 @@
   </li>
 
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="background: white; color: black;">Export As</a>
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="background: white; color: black;">
+      <i class="fa fa-file-excel"></i>
+    </a>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" style="font-size:10px;" onclick="exportAsPDF()">PDF</a></li>
       <li><a class="dropdown-item" style="font-size:10px;" onclick="exportAsXLS()">XLS (Microsoft Excel 1997-2004 Compatible)</a></li>
@@ -132,20 +127,11 @@
 </ul>
 
 <div class="container-fluid" id="container-to-print"> 
-  <div class="row pt-5 pb-5">
-    <center>
-      <div class="col-md-4">
 
-        {% if company_data.company_name != None %}
-        <a class="text" style="font-size: 1rem; color: white;">{{ company_data.company_name }}</a><br>
-        {% else %}
-        <a class="text" style="font-size: 1rem; color: white;">Add Company</a><br>
-        {% endif %}
-        {% comment %} <a class="text" style="font-size: 1rem; color: white;">{{ company.company_name }}</a><br> {% endcomment %}
-        <a class="text" style="font-size: 1.5rem; color: white;">FIFO Cost Lot Tracking </a><br>
-        <h5 class="text" id="selectedEndDate"></h5><br>
-      </div>
-    </center>   
+  <div class="row pt-5 pb-2">
+    <div class="col-md-4">
+      <a class="text" style="font-size: 1.5rem; color: white;"><b>Stock Summery </b></a><br>
+    </div>
   </div> 
 
   <div style="overflow-x: auto; overflow-x: hidden;">
@@ -154,100 +140,31 @@
         <table class="table" style="width: 100%;">
           <thead>
             <tr>
-              <th colspan="6" style="text-align: center;">PRODUCT IN</th>
-              <th colspan="4" style="text-align: center;">PRODUCT OUT</th> 
-            </tr>
-            <tr>
-              <th>DATE</th>
-              <th>TRANSACTIONS</th>
-              <th>RECEIVED FROM</th>
-              <th>ITEM NAME</th>
-              <th>QUANTITY</th>
-              <th>TOTAL</th>
-
-              <th>DATE</th>
-              <th>TRANSACTIONS</th>
-              <th>DISPERSED TO</th>
-              <th>QTY DISPERSED</th>
+              <th></th>
+              <th>Item Name</th>
+              <th>Sales Price</th>
+              <th>Purchase Price</th>
+              <th>Stock Quantity</th>
+              <th>Stock Value</th>
             </tr>
           </thead>
 
           <tbody>
+            {% for d in data %}
             <tr>
-              <td>02/03/2023</td>
-              <td>5000</td>
-              <td>AJ</td>
-              <td>Wood</td>
-              <td>5</td>
-              <td>5000</td>
-
-              <td>02/03/2023</td>
-              <td>5000</td>
-              <td>AJ</td>
-              <td>5</td> 
+              <td>{{ d.id }}</td>
+              <td>{{ d.Name }}</td>
+              <td>{{ d.s_price }}</td>
+              <td>{{ d.p_price }}</td>
+              <td>{{ d.stock }}</td>
+              <td></td>
             </tr>
-
-            <tr>
-              <td>02/03/2023</td>
-              <td>5000</td>
-              <td>AJ</td>
-              <td>Wood</td>
-              <td>5</td>
-              <td>5000</td>
-
-              <td>02/03/2023</td>
-              <td>5000</td>
-              <td>AJ</td>
-              <td>5</td> 
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td> 
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td> 
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td> 
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <p>**Amount is displayed in your base currency INR</p>
 </div>  
 
 <script>
@@ -256,8 +173,8 @@
     var end = moment();
 
     function cb(start, end, label) {
-      $('#reportrange span').text(label);
-      $('#selectedEndDate').text('From ' +start.format('MMMM D, YYYY')+'  to  '+end.format('MMMM D, YYYY'));
+      $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
     }
 
     $('#reportrange').daterangepicker({
@@ -294,7 +211,7 @@
       $('#reportrange').data('daterangepicker').toggle();
     });
 
-    cb(start, end, 'Today');
+    cb(start, end);
   });
 </script>
 
@@ -341,7 +258,7 @@
         XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     
         // Save the XLS file
-        XLSX.writeFile(wb, '{{ company_data.company_name }}_FIFO_Cost_Lot_Tracking.xlsx');
+        XLSX.writeFile(wb, '{{ company.company_name }}_FIFO_Cost_Lot_Tracking.xlsx');
     }
     
     function exportAsPDF() {
@@ -380,7 +297,7 @@
     
       const pdfOptions = {
         margin: 0,
-        filename: '{{company_data.company_name}}_FIFO_Cost_Lot_Tracking.pdf',
+        filename: 'Sales_Summery.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' },
@@ -404,11 +321,3 @@
   </script>
 
 {% endblock content %}
-
-
-
-
-
-
-
-

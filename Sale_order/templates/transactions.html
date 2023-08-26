@@ -65,7 +65,7 @@
               <tbody id="tableBody">
                 {% for v in allproduct %}
                 <tr>
-                  <td><a class="text-white" href="{% url 'transaction' v.id %}">{{ v.Name }}</a></td>
+                  <td><a class="text-white" href="{% url 'detail' v.id %}">{{ v.Name }}</a></td>
                   <td><a class="text-white" href="#">{{ v.stock }}</a></td>
                 </tr>
                 {% endfor %}
@@ -95,7 +95,7 @@
                   <p style="margin-top: -2.2rem; margin-left: 50rem; color: #01F9C6;">{{ product.stock }}</p> 
 
                   <p style="margin-top: -1rem; margin-left: 42rem; color: #FFCFB0;">STOCK VALUE :</p>
-                  <p style="margin-top: -2.3rem; margin-left: 50rem; color: #01F9C6;">{{ stock }}</p>
+                  <p style="margin-top: -2.3rem; margin-left: 50rem; color: #01F9C6;"></p>
                 </div>
               </div>      
             </div>

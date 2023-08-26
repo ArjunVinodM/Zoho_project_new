@@ -122,8 +122,8 @@
     <center>
       <div class="col-md-4">
 
-        {% if company.company_name != None %}
-        <a class="text" style="font-size: 1rem; color: white;">{{ company.company_name }}</a><br>
+        {% if company_data.company_name != None %}
+        <a class="text" style="font-size: 1rem; color: white;">{{ company_data.company_name }}</a><br>
         {% else %}
         <a class="text" style="font-size: 1rem; color: white;">Add Company</a><br>
         {% endif %}        <a class="text" style="font-size: 1.5rem; color: white;">Product Sales Report </a><br>
@@ -278,7 +278,7 @@
           XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
       
           // Save the XLS file
-          XLSX.writeFile(wb, '{{ company.company_name }}_Product_Sales_Report.xlsx');
+          XLSX.writeFile(wb, '{{ company_data.company_name }}_Product_Sales_Report.xlsx');
       }
       
       function exportAsPDF() {
@@ -317,7 +317,7 @@
       
         const pdfOptions = {
           margin: 0,
-          filename: '{{company.company_name}}_Product_Sales_Report.pdf',
+          filename: '{{company_data.company_name}}_Product_Sales_Report.pdf',
           image: { type: 'jpeg', quality: 0.98 },
           html2canvas: { scale: 2 },
           jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' },

@@ -8857,11 +8857,11 @@ def report(request):
 
 def fifo_cost(request):
     company = company_details.objects.get(user = request.user)
-    return render(request, 'fifo_cost.html', {'company': company})
+    return render(request, 'fifo_cost.html', {'company_data': company})
 
 def product_sales(request):
     company = company_details.objects.get(user = request.user)
-    return render(request, 'product_sales.html', {'company': company})
+    return render(request, 'product_sales.html', {'company_data': company})
 
 def show_customize_product(request):
     general = "url1"
@@ -8872,7 +8872,7 @@ def show_customize_product(request):
     context = {
         'url1' : general,
         'url2' : show,
-        'company': company,
+        'company-data': company,
     }
     return render(request, 'customize_show_product.html', context)
 
@@ -8887,7 +8887,7 @@ def product_customize(request):
         'url1' : general,
         'url2' : show,
         'item' : items,
-        'company': company,
+        'company_data': company,
     }
     return render(request, 'customize_product.html', context)
 
@@ -8896,7 +8896,7 @@ def customize_fifo(request):
     company = company_details.objects.get(user = request.user)
     context = {
         'item': items,
-        'company': company,
+        'company_data': company,
         }
     return render(request, 'customize_fifo.html', context)
     
@@ -9660,13 +9660,15 @@ def cust_Attach_files(request,id):
 # 2
 
 def sales_order(request):
+    company = company_details.objects.get(user = request.user)
     data = SalesOrder.objects.all()
-    return render(request, 'sales_order.html', {'data':data})
+    return render(request, 'sales_order.html', {'data':data, 'company_data': company})
 
 def sales_summery(request):
+    company = company_details.objects.get(user = request.user)
     data = AddItem.objects.all()
     
-    return render(request, 'sales_summery.html', {'data':data})
+    return render(request, 'sales_summery.html', {'data':data, 'company_data': company})
 
 def transaction(request, pk):
     product = AddItem.objects.get(id = pk)
@@ -9683,6 +9685,10 @@ def transaction(request, pk):
     bills = PurchaseBillItems.objects.filter(item_name = product.Name)
     expense = Expense.objects.filter(goods_label = product.Name)
     
+    quantity = int(product.stock)
+    price = int(product.p_price)
+    stock = (quantity * price)
+    
     
     
     context = {
@@ -9698,6 +9704,7 @@ def transaction(request, pk):
         'deliveryChellan': deliveryChellan,
         'bills': bills,
         'expense': expense,
+        'stock': stock,
     }
     
     return render(request, 'transactions.html', context)

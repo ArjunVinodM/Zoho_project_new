@@ -127,11 +127,18 @@
 </ul>
 
 <div class="container-fluid" id="container-to-print"> 
-
-  <div class="row pt-5 pb-2">
-    <div class="col-md-4">
-      <a class="text" style="font-size: 1.5rem; color: white;"><b>Stock Summery </b></a><br>
-    </div>
+  <div class="row pt-5">
+    <center>
+      <div class="col-md-4">
+        {% if company_data.company_name != None %}
+          <a class="text" style="font-size: 1rem; color: white;">{{ company_data.company_name }}</a><br>
+        {% else %}
+          <a class="text" style="font-size: 1rem; color: white;">Add Company</a><br>
+        {% endif %}
+        <a class="text" style="font-size: 1.5rem; color: white;">Stock Summery </a><br>
+        <h5 class="text" id="selectedEndDate"></h5><br>
+      </div>
+    </center>   
   </div> 
 
   <div style="overflow-x: auto; overflow-x: hidden;">
@@ -157,7 +164,7 @@
               <td>{{ d.s_price }}</td>
               <td>{{ d.p_price }}</td>
               <td>{{ d.stock }}</td>
-              <td></td>
+              <td>{{ stock}}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -174,6 +181,7 @@
 
     function cb(start, end, label) {
       $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+      $('#selectedEndDate').text('From ' +start.format('MMMM D, YYYY')+'  to  '+end.format('MMMM D, YYYY'));
 
     }
 

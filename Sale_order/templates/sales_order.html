@@ -164,18 +164,11 @@
 </ul>
 
 <div class="container-fluid" id="container-to-print"> 
-  <div class="row pt-5">
-    <center>
-      <div class="col-md-4">
-        {% if company_data.company_name != None %}
-          <a class="text" style="font-size: 1rem; color: white;">{{ company_data.company_name }}</a><br>
-        {% else %}
-          <a class="text" style="font-size: 1rem; color: white;">Add Company</a><br>
-        {% endif %}
-        <a class="text" style="font-size: 1.5rem; color: white;">Sale Order</a><br>
-        <h5 class="text" id="selectedEndDate"></h5><br>
-      </div>
-    </center>   
+
+  <div class="row pt-5 pb-2">
+    <div class="col-md-4">
+      <a class="text" style="font-size: 1.5rem; color: white;"><b>Sales Order</b></a><br>
+    </div>
   </div> 
 
 
@@ -294,7 +287,7 @@
               <td>{{ d.sales_no }}</td>
               <td>{{ d.customer.customerName }}</td>
               <td>{{ d.ship_date }}</td>
-              <td></td>
+              <td>{{ d.status }}</td>
               <td>{{ d.customer.customerType }}</td>
 
               <td>{{ d.subtotal }}</td>
@@ -317,7 +310,6 @@
 
       function cb(start, end, label) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        $('#selectedEndDate').text('From ' +start.format('MMMM D, YYYY')+'  to  '+end.format('MMMM D, YYYY'));
 
       }
 

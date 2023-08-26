@@ -44,17 +44,19 @@
                     
                     <li class="dropdown-header"><span style="color: rgb(184, 121, 4);font-weight: bold;font-size: larger;">Sales</span> 
     
-                        <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Sales by Customer</a>
-                        <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Sales by Item</a>
+                        <a class="dropdown-item " href="{% url 'salesby_customer' %}" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Sales by Customer</a>
+                        <a class="dropdown-item " href="{% url 'salesby_item' %}" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Sales by Item</a>
                         <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Sales by Sales Person</a>
+                        <a id="a_over" href="{% url 'sales_order' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales Order</a><br>
+                        <a id="a_over" href="{% url 'sales_summery' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales Summery</a><br>
         
                     </li>
                     <li class="dropdown-header"><span style="color: rgb(184, 121, 4);font-weight: bold;font-size: larger;">Inventory</span> 
     
                         <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Inventory Summary</a>
                         <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Inventory Valuation Summary</a>
-                        <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">FIFO Cost Lot Tracking<span style="color: rgba(158, 156, 156, 0.932);display: none;">inventory</span></a>
-                        <a class="dropdown-item " href="#" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Product Sales Report<span style="color: rgba(158, 156, 156, 0.932);display: none;">inventory</span></a>
+                        <a class="dropdown-item " href="{% url 'fifo_cost' %}" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">FIFO Cost Lot Tracking<span style="color: rgba(158, 156, 156, 0.932);display: none;">inventory</span></a>
+                        <a class="dropdown-item " href="{% url 'product_sales_report' %}" style="font-size: medium;color: rgb(26, 25, 25);font-weight:500;">Product Sales Report<span style="color: rgba(158, 156, 156, 0.932);display: none;">inventory</span></a>
         
         
                     </li>
@@ -204,7 +206,7 @@
                 <a id="a_over" href="{% url 'salesby_item' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales by Item</a><br>
                 <a id="a_over" href="#" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales by Sales Person</a><br>
                 <a id="a_over" href="{% url 'sales_order' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales Order</a><br>
-                <a id="a_over" href="{% url 'sales_summery' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Stock Summery</a><br>
+                <a id="a_over" href="{% url 'sales_summery' %}" class="ps-4" style="text-decoration: none;"> <img width="10" height="10" src="https://img.icons8.com/color/48/starburst-shape.png" alt="starburst-shape"/>&nbsp;&nbsp;&nbsp;Sales Summery</a><br>
             </div>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4 ">

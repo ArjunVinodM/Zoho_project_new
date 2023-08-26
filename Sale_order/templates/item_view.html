@@ -17,7 +17,6 @@
               Sort
             </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="#"  data-sort="all">All</a>
               <a class="dropdown-item" href="#"  data-sort="name">Name</a>
               <a class="dropdown-item" href="#"  data-sort="HSN">HSN/SAC</a>
               <a class="dropdown-item" href="#"  data-sort="usage">Usage Unit</a>
@@ -121,12 +120,6 @@
           $('#dataTable').children('tbody').append(row);
         });
       }
-
-      // Function to restore the table to its original state
-      function restoreOriginalTable() {
-        $('#dataTable').replaceWith(originalTable.clone()); // Replace the current table with the original table clone
-      }
-
   
       // Handle sorting based on data-sort attribute
       $('[data-sort]').on('click', function() {
@@ -137,8 +130,6 @@
           sortByHSN();
         } else if (sortType === 'usage') {
           sortByUsageUnit();
-        } else if (sortType === 'all') {
-          restoreOriginalTable();
         }
       });
     });
